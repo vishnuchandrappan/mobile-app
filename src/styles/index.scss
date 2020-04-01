@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
+@import-normalize; /* bring in normalize.css styles */
+
+@import "./general.scss";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
