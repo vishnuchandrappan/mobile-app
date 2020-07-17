@@ -3,22 +3,20 @@ import { Formik } from "formik";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import api from "../Resources/api";
+import { ToastContainer } from "react-toastify";
 import { required } from "../Resources/errors";
 import "./style.scss";
-class Login extends Component {
+class ForgotPassword extends Component {
   render() {
     if (this.props.isLoggedIn) {
       return <Redirect to="/" />;
     }
     return (
       <div className="container">
-        <h1>Login</h1> <hr />
+        <h1>Reset Password</h1> <hr />
         <Formik
           initialValues={{
-            email: "user1@test.com",
-            password: "password",
+            email: "",
           }}
           validate={(values) => {
             const errors = {};
@@ -31,31 +29,15 @@ class Login extends Component {
               errors.email = "Invalid  Email";
             }
 
-            if (!values.password) {
-              errors.password = required("password");
-            } else if (values.password.length < 8) {
-              errors.email = "Minimum 8 characters required";
-            }
-
             return errors;
           }}
           onSubmit={(values, { setStatus, setSubmitting }) => {
             setSubmitting(true);
             setStatus(true);
 
-            api
-              .post("/login", values)
-              .then(({ data }) => {
-                setSubmitting(false);
-                this.props.onLogin(data.data.token);
-                this.props.fetchUser(data.data.user);
-                toast.success("Login Successful");
-              })
-              .catch((err) => {
-                setSubmitting(false);
-                toast.error("Invalid Credentials");
-              });
+            console.log(values);
 
+            setSubmitting(false);
           }}
         >
           {({
@@ -95,33 +77,14 @@ class Login extends Component {
                   placeholder="john@example.com"
                 />
               </div>
-              <div className="form-group">
-                <TextField
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.password}
-                  helperText={touched.password && errors.password}
-                  error={Boolean(touched.password && errors.password)}
-                  variant="outlined"
-                  label="Password"
-                  type="password"
-                  placeholder="Your password here"
-                />
-              </div>
               <button
                 disabled={isSubmitting}
                 className="btn btn-primary btn-elevate kt-login__btn-primary"
                 type="submit"
               >
-                Login
+                Request Password Reset
               </button>
               <div className="change-op">
-                forgot Password ?{" "}
-                <Link className="btn btn-warning" to="/forgotPassword">
-                  Reset
-                </Link>
-                <br />
                 don't have an account ?{" "}
                 <Link className="btn btn-warning" to="/signup">
                   SignUp
@@ -141,11 +104,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onLogin: (token) => dispatch({ type: "USER_LOGIN", data: token }),
-    fetchUser: (user) => dispatch({ type: "FETCH_USER_DATA", data: user }),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps)(ForgotPassword);

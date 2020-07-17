@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export default function Login() {
+export default function NewEmployee() {
   return (
     <Form className="form-1">
       <div>

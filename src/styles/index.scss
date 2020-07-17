@@ -3,9 +3,37 @@
 @import-normalize; /* bring in normalize.css styles */
 
 @import "./general.scss";
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: 0.3s;
+}
+
+.btn-container {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-1 {
+  flex-direction: column;
+}
+
+.form-modal {
+  .MuiFormControl-root {
+    width: 100%;
+  }
+}
+
+tr,
+td {
+  text-align: center;
+}
+
+.MuiPaper-rounded{
+  background-color: rgba(crimson, 1) !important;
+  color: lavender !important;
 }

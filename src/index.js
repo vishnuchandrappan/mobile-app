@@ -3,11 +3,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import store, { persistor } from "./redux/store";
 import "./styles/index.scss";
+
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App store={store} persistor={persistor} />
   </BrowserRouter>,
   document.getElementById("root")
 );
