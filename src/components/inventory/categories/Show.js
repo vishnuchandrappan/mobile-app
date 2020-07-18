@@ -2,12 +2,36 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import api from "../../../Resources/api";
+import EditItem from "../EditItem";
 import NewItem from "../NewItem";
+import UpdateStock from "../UpdateStock";
 
 class Show extends Component {
   state = {
     data: [],
     labels: [],
+    currentItem: null,
+    show: false,
+    currentEditableItem: {
+      name: "",
+      unit_price: "",
+      discount: "",
+      label_id: "",
+      _method: "PUT",
+    },
+    editableShow: false,
+  };
+
+  handleClose = () => {
+    this.setState({
+      show: false,
+    });
+  };
+
+  handleEditableClose = () => {
+    this.setState({
+      editableShow: false,
+    });
   };
 
   componentDidMount() {
@@ -56,17 +80,47 @@ class Show extends Component {
                 <span> Remaining :{item.stock}</span>
               </div>
               <div className="item-options">
-                <Link to="/" className="btn btn-success">
+                <Link to={"/items/" + item.id} className="btn btn-success">
                   View
                 </Link>
-                <Link to="/" className="btn btn-info">
+                <button
+                  onClick={() => {
+                    this.setState({
+                      currentEditableItem: item,
+                      editableShow: true,
+                    });
+                  }}
+                  className="btn btn-dark"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => {
+                    this.setState({
+                      currentItem: item,
+                      show: true,
+                    });
+                  }}
+                  className="btn btn-info"
+                >
                   Update Stock
-                </Link>
+                </button>
               </div>
             </div>
           ))}
         </div>
-        <NewItem labels={this.state.labels}/>
+        <NewItem labels={this.state.labels} />
+        <UpdateStock
+          item={this.state.currentItem}
+          show={this.state.show}
+          handleClose={this.handleClose}
+        />
+        <EditItem
+          item={this.state.currentEditableItem}
+          show={this.state.editableShow}
+          handleClose={this.handleEditableClose}
+          labels={this.state.labels}
+        />
       </div>
     );
   }

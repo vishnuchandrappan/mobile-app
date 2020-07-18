@@ -58,10 +58,11 @@
     display: flex !important;
     justify-content: space-between;
   }
-  .item-options{
+  .item-options {
     display: flex;
     justify-content: flex-end;
-    a{
+    a,
+    button {
       margin: 0 20px;
     }
   }
