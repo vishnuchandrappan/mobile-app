@@ -21,26 +21,32 @@ export default function Home() {
           link="layouts"
         />
         <BCard
-          title="Add Employee"
-          subTitle="Create a new employee account"
-          text=""
-          link="employees/new"
-        />
-        <BCard
-          title="Manage Employees"
-          subTitle="lorem ipsum"
+          title="Employee Management"
+          subTitle="Manage new employee accounts"
           text=""
           link="employees"
         />
         <BCard
-          title="Employees List"
-          subTitle="lorem ipsum"
+          title="Edit Profile"
+          subTitle="Edit your personal details"
           text=""
-          link="employees/all"
+          link="profile"
+        />
+        <BCard
+          title="Change Password"
+          subTitle="change your password"
+          text=""
+          link="profile"
         />
         <BCard
           title="Manage Profile"
-          subTitle="lorem ipsum"
+          subTitle="manage your data with us"
+          text=""
+          link="profile"
+        />
+        <BCard
+          title="Change Active Status"
+          subTitle="change your status, if you are opened or closed today"
           text=""
           link="profile"
         />

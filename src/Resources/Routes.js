@@ -6,8 +6,10 @@ import ForgotPassword from "../components/ForgotPassword";
 import Home from "../components/Home";
 import Show from "../components/inventory/categories/Show";
 import Inventory from "../components/inventory/Home";
+import ShowStock from "../components/inventory/stock/ShowStock";
 import { default as Login, default as NewEmployee } from "../components/Login";
 import Logout from "../components/Logout";
+import Profile from "../components/profile/Profile";
 import Signup from "../components/Signup";
 
 function Routes({ isLoggedIn }) {
@@ -29,7 +31,10 @@ function Routes({ isLoggedIn }) {
         <Inventory />
       </Route>
 
+      <Route path="/profile" component={Profile}/>
+
       <Route exact path="/categories/:id" component={Show} />
+      <Route exact path="/items/:id" component={ShowStock} />
     </Switch>
   );
 }

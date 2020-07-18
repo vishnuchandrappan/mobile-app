@@ -11,8 +11,7 @@ Axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      // window.location.href = "/logout";
-      alert("Please Logout and login again");
+      alert("Session Expired. Please Logout and login again");
     }
     return error;
   }

@@ -1,9 +1,9 @@
 import {
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Select,
-    TextField
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
 } from "@material-ui/core";
 import { Formik } from "formik";
 import React, { Component, useState } from "react";
@@ -53,6 +53,7 @@ class SuperMarket extends Component {
       <React.Fragment>
         {this.state.isAvailable ? (
           <div className="container">
+            <h4>Super Market Details</h4>
             <table className="theaters table table-striped">
               <tbody>
                 <tr>

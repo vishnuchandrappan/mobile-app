@@ -1,53 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import api from "../../Resources/api";
-import BCard from "../BCard";
-import NewItem from "./NewItem";
+import api from "../../../Resources/api";
 
-
-class Home extends Component {
+class ShowStock extends Component {
   state = {
     data: [],
-    labels: [],
   };
   componentDidMount() {
     api.defaults.headers.common["Authorization"] = "Bearer " + this.props.token;
     api
-      .get("labels")
+      .get("items/" + this.props.match.params.id)
       .then(({ data }) => {
         this.setState({
           data: data.data,
         });
       })
       .catch((err) => {
-        console.log("error in fetching labels");
-      });
-
-    api
-      .get("labels")
-      .then(({ data }) => {
-        this.setState({
-          labels: data.data,
-        });
-      })
-      .catch((err) => {
-        console.log("error in fetching labels");
+        console.log("error in fetching items");
       });
   }
   render() {
     return (
       <div className="container">
-        <h1>Categories</h1>
-        <div className="form-1 grid grid-col-3">
+        <h1>Stocks</h1>
+        <div className="list-group">
           {this.state.data.map((item) => (
-            <BCard
-              key={item.id}
-              title={item.name}
-              link={"categories/" + item.id}
-            />
+            <div key={item.id} className="list-group-item items">
+              <div className="item-details">
+                <span>{item.stock}</span>
+                <span>Added On : {item.created_at}</span>
+              </div>
+              <div className="item-options">
+                <span className="btn btn-danger">Edit</span>
+              </div>
+            </div>
           ))}
         </div>
-        <NewItem labels={this.state.labels} />
       </div>
     );
   }
@@ -66,4 +54,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowStock);
