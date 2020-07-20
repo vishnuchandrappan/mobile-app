@@ -1,5 +1,14 @@
 @import "../Resources/variables.scss";
 
+.btn-danger{
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50% !important;
+}
+
 .form {
   display: flex;
   height: 70vh;

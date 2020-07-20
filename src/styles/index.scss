@@ -66,7 +66,6 @@
   }
 }
 
-
 .full-page {
   display: flex;
   justify-content: center;
@@ -83,7 +82,7 @@
 }
 
 body {
-  background-color: rgba(crimson, 0.2);
+  background-color: rgba(black, 0.9);
 }
 
 .container {
@@ -102,10 +101,33 @@ body {
   }
 }
 
+.dropdown,
+.nav-item,
+.nav-link {
+  color: white;
+  & > a {
+    color: white !important;
+  }
+}
+
 .btn-warning {
-  background-color: rgba(crimson, 0.5);
+  background-color: rgba(#00909e, 0.5);
   &:hover {
-    background-color: rgba(crimson, 0.9);
+    background-color: rgba(#00909e, 0.9);
+  }
+}
+
+.btn-success {
+  background-color: rgba(#dae1e7, 0.5);
+  &:hover {
+    background-color: rgba(#dae1e7, 0.9);
+  }
+}
+
+.btn-danger {
+  background-color: rgba(#27496d, 0.5);
+  &:hover {
+    background-color: rgba(#27496d, 0.9);
   }
 }
 

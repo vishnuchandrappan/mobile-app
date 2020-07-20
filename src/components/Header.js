@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.scss";
 function Header({ isLoggedIn, user, onLogout }) {
   return (
-    <Navbar bg="danger" expand="lg" className="flex between text-light">
+    <Navbar bg="dark" expand="lg" className="flex between text-light">
       <Navbar.Brand className="text-light ls-3">XPREDOCON</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
