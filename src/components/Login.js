@@ -43,6 +43,13 @@ class Login extends Component {
             setSubmitting(true);
             setStatus(true);
 
+            let token = "1245.asdasd.234124";
+            let user = {
+              name: "John Doe",
+              email : "john@example.com",
+              password : "password"
+            }
+
             api
               .post("/login", values)
               .then(({ data }) => {
@@ -90,7 +97,7 @@ class Login extends Component {
                   value={values.email}
                   helperText={touched.email && errors.email}
                   error={Boolean(touched.email && errors.email)}
-                  variant="outlined"
+                  variant="filled"
                   label="Email"
                   placeholder="john@example.com"
                 />
@@ -103,7 +110,7 @@ class Login extends Component {
                   value={values.password}
                   helperText={touched.password && errors.password}
                   error={Boolean(touched.password && errors.password)}
-                  variant="outlined"
+                  variant="filled"
                   label="Password"
                   type="password"
                   placeholder="Your password here"

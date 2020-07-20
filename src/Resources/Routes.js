@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import EmployeeList from "../components/EmployeeList";
 import ForgotPassword from "../components/ForgotPassword";
 import Home from "../components/Home";
@@ -11,6 +11,8 @@ import { default as Login, default as NewEmployee } from "../components/Login";
 import Logout from "../components/Logout";
 import Profile from "../components/profile/Profile";
 import Signup from "../components/Signup";
+import Result from "./Result";
+import XYZ from "./XYZ";
 
 function Routes({ isLoggedIn }) {
   return (
@@ -19,8 +21,11 @@ function Routes({ isLoggedIn }) {
       <Route path="/signup" component={Signup} />
       <Route path="/forgotPassword" component={ForgotPassword} />
 
-      {!isLoggedIn ? <Redirect to="/login" /> : ""}
-
+      {
+        // !isLoggedIn ? <Redirect to="/login" /> : ""
+      }
+      <Route path="/2" component={Result} />
+      <Route path="/3" component={XYZ}/>
       <Route path="/logout" component={Logout} />
 
       <Route path="/" exact component={Home} />

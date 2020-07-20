@@ -7,10 +7,9 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.scss";
 function Header({ isLoggedIn, user, onLogout }) {
   return (
-    <Navbar bg="warning" expand="lg" className="flex between">
-      <Navbar.Brand>Smart Mart</Navbar.Brand>
+    <Navbar bg="danger" expand="lg" className="flex between text-light">
+      <Navbar.Brand className="text-light ls-3">XPREDOCON</Navbar.Brand>
       <Navbar.Toggle />
-      <div>Make Your Shopping Experience easier</div>
       <Navbar.Collapse>
         {isLoggedIn ? (
           <Navbar.Text>

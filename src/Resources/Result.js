@@ -25,7 +25,7 @@ class Home extends Component {
     return (
       <div className="container">
         {this.state.currentPage !== this.state.lastPage}
-        <h1>Hello User</h1>
+        <h1>What all symptoms do you have ?</h1>
         <div className="full-page">
           {this.state.speaking ? (
             <button
@@ -33,7 +33,7 @@ class Home extends Component {
               onClick={() => {
                 this.setState({
                   speaking: false,
-                  lastPage: "2",
+                  lastPage: "3",
                 });
               }}
             >
@@ -61,27 +61,34 @@ class Home extends Component {
           ) : (
             ""
           )}
-          {!this.state.speaking && this.state.lastPage === "2" ? (
-            <div className="btn-container">
-              <button
-                className="btn btn-danger"
-                onClick={() => {
-                  window.location.href = this.state.lastPage;
-                }}
-              >
-                Next
-              </button>
-              <button
-                onClick={() => {
-                  this.setState({
-                    speaking: true,
-                  });
-                }}
-                className="btn btn-success"
-              >
-                Try Again
-              </button>
-            </div>
+          {!this.state.speaking && this.state.lastPage === "3" ? (
+            <>
+              <div className="btn-container">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    window.location.href = this.state.lastPage;
+                  }}
+                >
+                  Next
+                </button>
+                <button
+                  onClick={() => {
+                    this.setState({
+                      speaking: true,
+                    });
+                  }}
+                  className="btn btn-success"
+                >
+                  Try Again
+                </button>
+              </div>
+              <div className="list-group">
+                <span className="list-group-item">Symotom 1</span>
+                <span className="list-group-item">Symotom 2</span>
+                <span className="list-group-item">Symotom 3</span>
+              </div>
+            </>
           ) : (
             ""
           )}
