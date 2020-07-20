@@ -43,13 +43,6 @@ class Login extends Component {
             setSubmitting(true);
             setStatus(true);
 
-            let token = "1245.asdasd.234124";
-            let user = {
-              name: "John Doe",
-              email : "john@example.com",
-              password : "password"
-            }
-
             api
               .post("/login", values)
               .then(({ data }) => {
